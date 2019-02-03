@@ -1,0 +1,13 @@
+{
+  "name": "@politico/eslint-config-interactives",
+  "version": "0.0.1",
+  "description": "Script fashion at POLITICO Interactive News",
+  "main": "index.js",
+  "repository": "git@github.com:The-Politico/eslint-config-interactives.git",
+  "author": "Jon McClure <jmcclure@politico.com>",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-react": "^7.0.2"
+  }
+}
