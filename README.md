@@ -2,7 +2,7 @@
 
 # @politico/eslint-config-interactives
 
-Script fashion at POLITICO Interactive News.
+Script fashion at [POLITICO Interactive News](https://github.com/The-Politico).
 
 Extends [standard style](https://standardjs.com/), but with god-fearing semicolons.
 
@@ -10,7 +10,7 @@ Extends [standard style](https://standardjs.com/), but with god-fearing semicolo
 
 1.  Install the package:
 
-        $ yarn add @politico/eslint-config-interactives
+        $ yarn add -D @politico/eslint-config-interactives
 
 2.  Create a `eslintrc.json` in the root of your project:
 
