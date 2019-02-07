@@ -10,10 +10,16 @@ Extends [standard style](https://standardjs.com/), but with god-fearing semicolo
 
 1.  Install the package:
 
-        $ yarn add -D @politico/eslint-config-interactives
+        $ yarn add -D @politico/eslint-config-interactives eslint
 
 2.  Create a `eslintrc.json` in the root of your project:
 
         {
+          "root": true,
           "extends": "@politico/eslint-config-interactives"
         }
+
+
+### In your editor
+
+Interactive News developers should use plugins in their editor to fix errors on save. For example, if you're using [atom](https://atom.io/), use [linter-eslint](https://atom.io/packages/linter-eslint).
