@@ -22,4 +22,4 @@ Extends [standard style](https://standardjs.com/), but with god-fearing semicolo
 
 ### In your editor
 
-Interactive News developers should use plugins in their editor to fix errors on save. For example, if you're using [atom](https://atom.io/), use [linter-eslint](https://atom.io/packages/linter-eslint).
+Interactive News developers should use a plugin in their editor to fix errors on save. For example, if you're using [atom](https://atom.io/), use [linter-eslint](https://atom.io/packages/linter-eslint).
