@@ -20,5 +20,5 @@ module.exports = {
     "space-before-function-paren": ["error", "never"],
     "react/prop-types": ["skipUndeclared"]
   },
-  extends: ["standard", "standard-react"]
+  extends: ["standard", "standard-react", "plugin:jsx-a11y/recommended"]
 };

@@ -1,6 +1,6 @@
 {
   "name": "@politico/eslint-config-interactives",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Script fashion at POLITICO Interactive News",
   "main": "index.js",
   "repository": "git@github.com:The-Politico/eslint-config-interactives.git",
@@ -11,10 +11,11 @@
     "eslint-config-standard": "*",
     "eslint-config-standard-react": "*",
     "eslint-plugin-import": "*",
+    "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-node": "*",
     "eslint-plugin-promise": "*",
-    "eslint-plugin-standard": "*",
-    "eslint-plugin-react": "*"
+    "eslint-plugin-react": "*",
+    "eslint-plugin-standard": "*"
   },
   "peerDependencies": {
     "eslint": "*"
