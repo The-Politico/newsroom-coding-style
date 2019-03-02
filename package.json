@@ -1,6 +1,6 @@
 {
   "name": "@politico/eslint-config-interactives",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Script fashion at POLITICO Interactive News",
   "main": "index.js",
   "repository": "git@github.com:The-Politico/eslint-config-interactives.git",
