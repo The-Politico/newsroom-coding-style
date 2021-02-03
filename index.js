@@ -29,5 +29,6 @@ module.exports = {
     'standard',
     'standard-react',
     'plugin:jsx-a11y/recommended',
+    'plugin:react/recommended',
   ],
 };
