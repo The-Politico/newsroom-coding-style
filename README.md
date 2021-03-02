@@ -1,6 +1,6 @@
 # POLITICO Newsroom Codindg Style Guide
 
-*v1.0.0*
+*v1.0.1*
 
 This style guide is intended for coders of all levels in the POLITICO newsroom. It aims to give an easily scannable yet comprehensive set of rules on code syntax and helpful guides on code composition.
 

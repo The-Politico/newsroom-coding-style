@@ -10,7 +10,7 @@ module.exports = {
     "max-len": [
       1,
       {
-        "code": 80,
+        "code": 79,
         "tabWidth": 2,
         "ignoreUrls": true,
         "ignoreTemplateLiterals": true
