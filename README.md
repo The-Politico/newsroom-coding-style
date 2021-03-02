@@ -1,4 +1,4 @@
-# POLITICO Newsroom Codindg Style Guide
+# POLITICO Newsroom Coding Style Guide
 
 *v1.0.1*
 
