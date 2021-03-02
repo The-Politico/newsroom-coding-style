@@ -157,18 +157,18 @@ Direct exports from an import are allowed when that is the only thing a file is 
 export { es6 as airbnbEsSix } from './AirbnbStyleGuide';
 
 export default const MyComponent = () => {
-	return null;
+  return null;
 }
 
 /****** Good: Doesn't use direct exports with other code ******/
 import { es6 as airbnbEsSix } from './AirbnbStyleGuide';
 
 export default const MyComponent = () => {
-	return null;
+  return null;
 }
 
 export {
-	airbnbEsSix
+  airbnbEsSix
 }
 
 /****** Also Good: Uses direct exoprts exclusively ******/
@@ -298,19 +298,19 @@ export default function GoodComponent(){
 export default function Layout(props){
   const { oneOrTwo } = props;
 
-	let Component = () => null; // blank component
-	switch (oneOrTwo) {
-	  case 'one':
-	    Component = One;
+  let Component = () => null; // blank component
+  switch (oneOrTwo) {
+    case 'one':
+      Component = One;
       break;
-		case 'two':
-			Component = Two;
-			break;
-	}
+    case 'two':
+      Component = Two;
+      break;
+  }
 
   return (
-		<Component />
-	);
+    <Component />
+  );
 }
 
 // GoodComponent/Layout/One/index.js
@@ -384,7 +384,7 @@ export default function BadComponent() {
         ullamco laboris nisi ut aliquip ex ea commodo consequat.
         Duis aute irure dolor in reprehenderit in voluptate velit
         esse cillum dolore eu fugiat nulla pariatur.
-			</p>
+      </p>
     </div>
   )
 }
@@ -392,8 +392,8 @@ export default function BadComponent() {
 /****** Good: Calculates attributes before JSX ******/
 export default function GoodComponent() {  
   const positionTop = aspectRatio === 'portrait'
-		? 2 * pageHeight
-		: 2.73 * pageWidth;
+    ? 2 * pageHeight
+    : 2.73 * pageWidth;
   const width = pageWidth / 2 > 1000 ? 1000 : pageWidth / 2;
 
   const paragraphStyle = {
@@ -410,7 +410,7 @@ export default function GoodComponent() {
         ullamco laboris nisi ut aliquip ex ea commodo consequat.
         Duis aute irure dolor in reprehenderit in voluptate velit
         esse cillum dolore eu fugiat nulla pariatur.
-			</p>
+      </p>
     </div>
   )
 }
@@ -453,8 +453,8 @@ export default function GoodComponent(){
   return (
     <div>
       {data.map((d, i) => (
-				<GoodChildComponent key={d.id} idx={i} {...d} />
-			))}
+        <GoodChildComponent key={d.id} idx={i} {...d} />
+      ))}
     </div>
   )
 }
@@ -475,8 +475,8 @@ export default function GoodComponent(){
   return (
     <div>
       {data.map((d, i) => (
-				<GoodIntermediaryComponent key={d.id} idx={i} {...d} />
-			))}
+        <GoodIntermediaryComponent key={d.id} idx={i} {...d} />
+      ))}
     </div>
   )
 }
