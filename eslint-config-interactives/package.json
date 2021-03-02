@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/The-Politico/newsroom-coding-style"
+    "url": "https://github.com/The-Politico/newsroom-coding-style",
     "directory": "eslint-config-interactives"
   },
   "author": "Andrew Briz <abriz@politico.com>",
