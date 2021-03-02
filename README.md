@@ -1,15 +1,15 @@
-# POLITICO Editorial Code Style Guide – DRAFT
+# POLITICO Newsroom Codindg Style Guide
 
 *v1.0.0*
 
-This style guide is intended for coders of all levels at the POLITICO editorial department. It aims to give an easily scannable yet comprehensive set of rules on code syntax and composition.
+This style guide is intended for coders of all levels in the POLITICO newsroom. It aims to give an easily scannable yet comprehensive set of rules on code syntax and helpful guides on code composition.
 
-*Are you here for help with the npm package, @politico/eslint-config-interactives? Check out [these docs](./docs/@politico-eslint-config-interactives).*.
+*Are you here for help with the npm package, @politico/eslint-config-interactives? Check out [these docs](./eslint-config-interactives).*.
 
 # Table of Contents
 
 - [Values](#values)
-    - [Readable](#readable)
+    - [Readable](#readability)
     - [Unobtrusive](#unobtrusive)
     - [Opinionated](#opinionated)
     - [Flexible](#flexible)
@@ -19,17 +19,17 @@ This style guide is intended for coders of all levels at the POLITICO editorial 
     - [CSS](#css)
     - [SASS](#sass)
     - [Usage Amendments](#usage-amendments)
-        - [JavaScript]()
-        - [React]()
-        - [CSS]()
-        - [SASS]()
+        - [JavaScript](#javascript-1)
+        - [React](#react-1)
+        - [CSS](#css-1)
+        - [SASS](#sass-1)
 - [Coding Principles of Composition](#coding-principles-of-composition)
     - [Organizing Code Into Files](#organizing-code-into-files)
         - [Indentation](#indentation)
         - [Logic in JSX](#logic-in-jsx)
         - [A Note on Hooks](#a-note-on-hooks)
     - [Optimization Through Memoization](#optimization-through-memoization)
-    - [Using Fragments](#using-fragments)
+    - [Using Fragments](#using-fragments-in-jsx)
 - [Amending This Style Guide](#amending-this-style-guide)
     - [Proposal](#proposal)
     - [Reconciliation](#reconciliation)
