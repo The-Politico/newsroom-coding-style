@@ -1,0 +1,21 @@
+{
+  "name": "@politico/stylelint-config-interactives",
+  "version": "1.0.1",
+  "description": "Style fashion at POLITICO Interactive News",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/The-Politico/newsroom-coding-style",
+    "directory": "stylelint-config-interactives"
+  },
+  "author": "Andrew Briz <abriz@politico.com>",
+  "license": "MIT",
+  "dependencies": {
+    "stylelint-order": "^0.7.0",
+    "stylelint-scss": "^1.2.1"
+  },
+  "peerDependencies": {
+    "eslint": "*",
+    "stylelint": "^8.0.0"
+  }
+}
