@@ -1,6 +1,6 @@
 {
   "name": "@politico/stylelint-config-interactives",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Style fashion at POLITICO Interactive News",
   "main": "index.js",
   "repository": {
@@ -16,6 +16,6 @@
   },
   "peerDependencies": {
     "eslint": "*",
-    "stylelint": "^8.0.0"
+    "stylelint": ">8.0.0"
   }
 }

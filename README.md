@@ -1,6 +1,6 @@
 # POLITICO Newsroom Coding Style Guide
 
-*v1.0.1*
+*v1.0.2*
 
 This style guide is intended for coders of all levels in the POLITICO newsroom. It aims to give an easily scannable yet comprehensive set of rules on code syntax and helpful guides on code composition.
 
@@ -8,33 +8,35 @@ This style guide is intended for coders of all levels in the POLITICO newsroom. 
 
 # Table of Contents
 
+- [POLITICO Newsroom Coding Style Guide](#politico-newsroom-coding-style-guide)
+- [Table of Contents](#table-of-contents)
 - [Values](#values)
-    - [Readable](#readability)
-    - [Unobtrusive](#unobtrusive)
-    - [Opinionated](#opinionated)
-    - [Flexible](#flexible)
+  - [Readability](#readability)
+  - [Unobtrusive](#unobtrusive)
+  - [Opinionated](#opinionated)
+  - [Flexible](#flexible)
 - [Elementary Coding Rules of Usage](#elementary-coding-rules-of-usage)
-    - [JavaScript](#javascript)
-    - [React](#react)
-    - [CSS](#css)
-    - [SASS](#sass)
-    - [Usage Amendments](#usage-amendments)
-        - [JavaScript](#javascript-1)
-        - [React](#react-1)
-        - [CSS](#css-1)
-        - [SASS](#sass-1)
+  - [JavaScript](#javascript)
+  - [React](#react)
+  - [CSS](#css)
+  - [SASS](#sass)
+  - [Usage Amendments](#usage-amendments)
+    - [JavaScript](#javascript-1)
+    - [React](#react-1)
+    - [CSS](#css-1)
+    - [SASS](#sass-1)
 - [Coding Principles of Composition](#coding-principles-of-composition)
-    - [Organizing Code Into Files](#organizing-code-into-files)
-        - [Indentation](#indentation)
-        - [Logic in JSX](#logic-in-jsx)
-        - [A Note on Hooks](#a-note-on-hooks)
-    - [Optimization Through Memoization](#optimization-through-memoization)
-    - [Using Fragments](#using-fragments-in-jsx)
+  - [Organizing Code Into Files](#organizing-code-into-files)
+    - [**Indentation**](#indentation)
+    - [**Logic in JSX**](#logic-in-jsx)
+    - [**A Note on Hooks**](#a-note-on-hooks)
+  - [Optimization Through Memoization](#optimization-through-memoization)
+  - [Using Fragments in JSX](#using-fragments-in-jsx)
 - [Amending This Style Guide](#amending-this-style-guide)
-    - [Proposal](#proposal)
-    - [Reconciliation](#reconciliation)
-    - [Discussion](#discussion)
-    - [Ratification](#ratification)
+  - [Proposal](#proposal)
+  - [Reconciliation](#reconciliation)
+  - [Discussion](#discussion)
+  - [Ratification](#ratification)
 
 # Values
 
