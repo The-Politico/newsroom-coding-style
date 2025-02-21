@@ -125,10 +125,25 @@ async function processFile(templateId, item) {
     let localContent = '';
     if (existsSync(filePath)) {
       localContent = await fs.readFile(filePath, 'utf-8');
+      fileUpdated = await diffAndPrompt(filePath, localContent, targetContent);
     } else {
-      log.info(`${filePath} does not exist locally. It will be created.`);
+      const { create } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'create',
+          message: `${filePath} does not exist locally. Would you like to create it?`,
+          default: false,
+        },
+      ]);
+      if (!create) {
+        log.info(`Skipping creation of ${filePath}`);
+        return;
+      } else {
+        await fs.writeFile(filePath, targetContent);
+        log.info(`${filePath} created.`);
+        fileUpdated = true;
+      }
     }
-    fileUpdated = await diffAndPrompt(filePath, localContent, targetContent);
   } else if (type === 'package') {
     // Special handling for package.json
     const targetContentText = await getTargetContent(templateId, filePath);
@@ -157,7 +172,7 @@ async function processFile(templateId, item) {
   }
 
   if (fileUpdated && reset) {
-    log.info(`Critical file ${filePath} has been updated. Please run the migrate step again.`);
+    log.info(`Critical file ${filePath} has been updated. Please run the migrate script again.`);
     process.exit(0);
   }
 }
