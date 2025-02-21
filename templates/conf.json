@@ -13,7 +13,7 @@
   },
   {
     "type": "config",
-    "path": ".prettier.config.mjs"
+    "path": "prettier.config.mjs"
   },
   {
     "type": "package",
