@@ -1,6 +1,11 @@
 [
   {
     "type": "script",
+    "path": "bin/migrate.mjs",
+    "reset": true
+  },
+  {
+    "type": "script",
     "path": ".github/workflows/check.yml"
   },
   {
