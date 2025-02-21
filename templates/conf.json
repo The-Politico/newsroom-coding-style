@@ -1,0 +1,30 @@
+[
+  {
+    "type": "script",
+    "path": ".github/workflows/check.yml"
+  },
+  {
+    "type": "script",
+    "path": "bin/setup.mjs"
+  },
+  {
+    "type": "config",
+    "path": ".nvmrc"
+  },
+  {
+    "type": "config",
+    "path": ".prettier.config.mjs"
+  },
+  {
+    "type": "json",
+    "path": "package.json"
+  },
+  {
+    "type": "config",
+    "path": "eslint.config.mjs"
+  },
+  {
+    "type": "json",
+    "path": "jsconfig.json"
+  }
+]
