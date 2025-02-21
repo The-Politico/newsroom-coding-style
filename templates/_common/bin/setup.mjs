@@ -1,22 +1,22 @@
-import * as fs from "fs";
-import * as path from "path";
-import ejs from "ejs";
-import { log } from "@politico/hermes";
+import * as fs from 'fs';
+import * as path from 'path';
+import ejs from 'ejs';
+import { log } from '@politico/hermes';
 
 const rootDir = process.cwd();
 
 const EXCLUDED_DIRECTORIES = new Set([
-  ".github",
-  ".git",
-  "node_modules",
-  "dist",
+  '.github',
+  '.git',
+  'node_modules',
+  'dist',
 ]);
 
-const LATEST_DEPENDENCIES = ["@politico/hermes", "@politico/lambda"];
+const LATEST_DEPENDENCIES = ['@politico/hermes', '@politico/lambda'];
 
 const projectName = (() => {
   const cwdName = path.basename(process.cwd());
-  const underscoreIndex = cwdName.indexOf("_");
+  const underscoreIndex = cwdName.indexOf('_');
   if (underscoreIndex === -1) {
     return cwdName;
   }
@@ -29,7 +29,7 @@ const TEMPLATE_DATA = {
   projectName: [
     projectName[0].toLocaleUpperCase(),
     ...projectName.substring(1),
-  ].join(""),
+  ].join(''),
   year: new Date().getFullYear(),
 };
 
@@ -56,7 +56,7 @@ function processEjsFile(filePath) {
       return;
     }
 
-    fs.writeFileSync(filePath, renderedContent, "utf8");
+    fs.writeFileSync(filePath, renderedContent, 'utf8');
   });
 }
 
@@ -69,10 +69,10 @@ async function getLatestNonBetaVersion(name) {
 
     const data = await response.json();
     const versions = Object.keys(data.versions).reverse();
-    let latestNonBetaVersion = data["dist-tags"].latest;
+    let latestNonBetaVersion = data['dist-tags'].latest;
 
     for (const v of versions) {
-      if (!v.includes("beta") && !v.includes("alpha")) {
+      if (!v.includes('beta') && !v.includes('alpha')) {
         latestNonBetaVersion = v;
         break;
       }
@@ -85,10 +85,10 @@ async function getLatestNonBetaVersion(name) {
 }
 
 async function updateDependencies(dependenciesToUpdate) {
-  const packageJsonPath = path.join(process.cwd(), "package.json");
+  const packageJsonPath = path.join(process.cwd(), 'package.json');
 
   try {
-    const packageJsonData = await fs.promises.readFile(packageJsonPath, "utf8");
+    const packageJsonData = await fs.promises.readFile(packageJsonPath, 'utf8');
     const packageJson = JSON.parse(packageJsonData);
 
     const dependencies = packageJson.dependencies || {};
@@ -127,10 +127,10 @@ async function updateDependencies(dependenciesToUpdate) {
         null,
         2
       ),
-      "utf8"
+      'utf8'
     );
 
-    log.success("package.json updated successfully!");
+    log.success('package.json updated successfully!');
   } catch (error) {
     log.error(`Error updating dependencies: ${error.message}`);
   }
@@ -138,7 +138,7 @@ async function updateDependencies(dependenciesToUpdate) {
 
 async function updateLatestNodeVersion(majorVersion) {
   try {
-    const response = await fetch("https://nodejs.org/dist/index.json");
+    const response = await fetch('https://nodejs.org/dist/index.json');
     if (!response.ok) {
       throw new Error(
         `Failed to fetch Node.js versions: ${response.statusText}`
@@ -157,11 +157,11 @@ async function updateLatestNodeVersion(majorVersion) {
       throw new Error(`No Node.js v${majorVersion} versions found.`);
     }
 
-    const latestVersion = nodeVersions[0].replace("v", "");
+    const latestVersion = nodeVersions[0].replace('v', '');
 
-    const nvmrcPath = path.join(process.cwd(), ".nvmrc");
+    const nvmrcPath = path.join(process.cwd(), '.nvmrc');
 
-    await fs.promises.writeFile(nvmrcPath, latestVersion + "\n", "utf8");
+    await fs.promises.writeFile(nvmrcPath, latestVersion + '\n', 'utf8');
     log.info(`Updated .nvmrc to Node.js v${latestVersion}`);
   } catch (error) {
     log.error(
@@ -172,10 +172,10 @@ async function updateLatestNodeVersion(majorVersion) {
 
 // Run Setup
 (async () => {
-  log.info("Starting setup scripts...");
+  log.info('Starting setup scripts...');
 
   const pkgJsonText = await fs.readFileSync(
-    path.join(process.cwd(), "package.json")
+    path.join(process.cwd(), 'package.json')
   );
   const pkg = JSON.parse(pkgJsonText);
 
@@ -190,5 +190,5 @@ async function updateLatestNodeVersion(majorVersion) {
   log.success(`Finished processing template strings in: ${rootDir}`);
 
   updateDependencies(LATEST_DEPENDENCIES);
-  updateLatestNodeVersion("22");
+  updateLatestNodeVersion('22');
 })();
