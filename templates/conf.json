@@ -16,7 +16,7 @@
     "path": ".prettier.config.mjs"
   },
   {
-    "type": "json",
+    "type": "package",
     "path": "package.json"
   },
   {
@@ -24,7 +24,7 @@
     "path": "eslint.config.mjs"
   },
   {
-    "type": "json",
+    "type": "config",
     "path": "jsconfig.json"
   }
 ]
