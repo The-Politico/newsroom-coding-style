@@ -174,6 +174,18 @@ async function updateLatestNodeVersion(majorVersion) {
 (async () => {
   log.info("Starting setup scripts...");
 
+  const pkgJsonText = await fs.readFileSync(
+    path.join(process.cwd(), "package.json")
+  );
+  const pkg = JSON.parse(pkgJsonText);
+
+  if (pkg.setup) {
+    log.success(
+      'Repo already setup. To setup again, change "setup" in package.json to false.'
+    );
+    return;
+  }
+
   processDirectoryForEJS(rootDir);
   log.success(`Finished processing template strings in: ${rootDir}`);
 
