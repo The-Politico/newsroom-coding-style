@@ -177,14 +177,16 @@ async function processFile(templateId, item) {
   }
 }
 
-// Get target file content from template id and file path
+// Get target file content from template id and file path,
+// appending a cache-break query param with the current ISO time.
 async function getTargetContent(templateId, filePath) {
   const baseUrl = getBaseUrl();
-  let targetUrl = `${baseUrl}/${templateId}/${filePath}`;
+  const timestamp = new Date().toISOString();
+  let targetUrl = `${baseUrl}/${templateId}/${filePath}?t=${encodeURIComponent(timestamp)}`;
   let content = await fetchText(targetUrl);
   if (content === null) {
     // Fall back to _common
-    targetUrl = `${baseUrl}/_common/${filePath}`;
+    targetUrl = `${baseUrl}/_common/${filePath}?t=${encodeURIComponent(timestamp)}`;
     content = await fetchText(targetUrl);
     if (content === null) {
       throw new Error(`File ${filePath} not found in template "${templateId}" or in _common`);
@@ -218,7 +220,7 @@ async function main() {
     process.exit(1);
   }
 
-  const confUrl = `${getBaseUrl()}/conf.json`;
+  const confUrl = `${getBaseUrl()}/conf.json?t=${encodeURIComponent(new Date().toISOString())}`;
   let conf;
   try {
     conf = await fetchJson(confUrl);
