@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "Config/*": ["../config/*"],
+      "Atoms/*": ["atoms/*"],
+      "Components/*": ["components/*"],
+      "Content/*": ["content/*"],
+      "Utils/*": ["utils/*"],
+      "Stores/*": ["stores/*"],
+      "Theme/*": ["theme/*"],
+      "Data/*": ["data/*"],
+      "package.json": ["../package.json"]
+    }
+  }
+}
