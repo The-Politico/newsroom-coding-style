@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "env": ["env.js"],
+      "constants/*": ["constants/*"],
+      "core/*": ["core/*"],
+      "routes/*": ["routes/*"],
+      "utils/*": ["utils/*"],
+      "package.json": ["../package.json"]
+    }
+  }
+}
