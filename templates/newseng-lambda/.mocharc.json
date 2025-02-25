@@ -1,0 +1,6 @@
+{
+  "require": ["tsconfig-paths/register"],
+  "node-option": ["import=tsx"],
+  "timeout": 30000,
+  "extension": ["ts"]
+}

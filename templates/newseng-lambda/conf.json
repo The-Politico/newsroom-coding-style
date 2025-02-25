@@ -1,0 +1,47 @@
+[
+  {
+    "type": "script",
+    "path": "bin/migrate.mjs",
+    "reset": true
+  },
+  {
+    "type": "script",
+    "path": ".github/workflows/check.yml"
+  },
+  {
+    "type": "script",
+    "path": "bin/setup.mjs"
+  },
+  {
+    "type": "config",
+    "path": ".nvmrc"
+  },
+  {
+    "type": "config",
+    "path": "prettier.config.mjs"
+  },
+  {
+    "type": "package",
+    "path": "package.json"
+  },
+  {
+    "type": "config",
+    "path": "eslint.config.mjs"
+  },
+  {
+    "type": "config",
+    "path": "jsconfig.json"
+  },
+  {
+    "type": "config",
+    "path": "esbuild.dev.config.mjs"
+  },
+  {
+    "type": "config",
+    "path": "esbuild.prod.config.mjs"
+  },
+  {
+    "type": "config",
+    "path": ".mocharc.json"
+  }
+]

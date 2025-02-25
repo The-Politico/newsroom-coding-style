@@ -220,7 +220,7 @@ async function main() {
     process.exit(1);
   }
 
-  const confUrl = `${getBaseUrl()}/conf.json?t=${encodeURIComponent(new Date().toISOString())}`;
+  const confUrl = `${getBaseUrl()}/${templateId}/conf.json?t=${encodeURIComponent(new Date().toISOString())}`;
   let conf;
   try {
     conf = await fetchJson(confUrl);
