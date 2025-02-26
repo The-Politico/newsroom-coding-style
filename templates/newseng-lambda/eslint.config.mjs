@@ -2,10 +2,21 @@
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslint from '@eslint/js';
+import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['**/dist/**'],
+    ignores: ['**/dist/**', '**/node_modules/**'],
+  },
+  {
+    files: ['**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
+    },
   },
   eslint.configs.recommended,
   tseslint.configs.recommended,
