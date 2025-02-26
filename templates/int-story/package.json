@@ -2,7 +2,8 @@
   "scripts": {
     "check:format": "npx prettier . --write --log-level warn",
     "check:scripts": "eslint . --fix",
-    "check": "npm run check:scripts ; npm run check:format"
+    "check": "npm run check:scripts ; npm run check:format",
+    "migrate": "node bin/migrate.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.405.0",

@@ -12,6 +12,12 @@ import process from 'process';
 const TARGET_BRANCH = 'develop';
 const TARGET_REPO = 'The-Politico/newsroom-coding-style';
 
+// Ensure the directory for the given file path exists.
+async function ensureDir(filePath) {
+  const dir = path.dirname(filePath);
+  await fs.mkdir(dir, { recursive: true });
+}
+
 function getBaseUrl() {
   return `https://raw.githubusercontent.com/${TARGET_REPO}/refs/heads/${TARGET_BRANCH}/templates`;
 }
@@ -62,6 +68,7 @@ async function diffAndPrompt(filePath, localContent, targetContent) {
     },
   ]);
   if (update) {
+    await ensureDir(filePath);
     await fs.writeFile(filePath, targetContent);
     log.info(`${filePath} updated successfully.`);
     return true;
@@ -145,6 +152,7 @@ async function processFile(templateId, item) {
         log.info(`Skipping creation of ${filePath}`);
         return;
       } else {
+        await ensureDir(filePath);
         await fs.writeFile(filePath, targetContent);
         log.info(`${filePath} created.`);
         fileUpdated = true;
@@ -185,6 +193,7 @@ async function processFile(templateId, item) {
     fileUpdated =
       changedScripts || changedDependencies || changedDevDependencies;
     if (fileUpdated) {
+      await ensureDir(filePath);
       await fs.writeFile(filePath, JSON.stringify(localPackage, null, 2));
       log.info(`${filePath} updated successfully.`);
     }

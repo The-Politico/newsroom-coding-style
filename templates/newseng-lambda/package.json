@@ -6,7 +6,8 @@
     "check": "npm run check:types ; npm run check:scripts ; npm run check:format",
     "dev": "nodemon",
     "dev:build": "node esbuild.dev.config.mjs",
-    "build": "node esbuild.prod.config.mjs"
+    "build": "node esbuild.prod.config.mjs",
+    "migrate": "node bin/migrate.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.726.1",
