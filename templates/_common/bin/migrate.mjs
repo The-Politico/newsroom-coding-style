@@ -1,10 +1,12 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import fs from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
 import * as diff from 'diff';
 import { log } from '@politico/hermes';
+import process from 'process';
 
 // Constants for target repository and branch
 const TARGET_BRANCH = 'develop';
@@ -38,11 +40,11 @@ async function diffAndPrompt(filePath, localContent, targetContent) {
 
   log.info(`Differences for ${filePath}:`);
   const changes = diff.diffLines(localContent, targetContent);
-  changes.forEach(part => {
+  changes.forEach((part) => {
     if (part.added || part.removed) {
       const symbol = part.added ? '+' : '-';
       const color = part.added ? '\x1b[32m' : '\x1b[31m';
-      part.value.split('\n').forEach(line => {
+      part.value.split('\n').forEach((line) => {
         if (line.trim() !== '') {
           console.log(color + symbol + ' ' + line + '\x1b[0m');
         }
@@ -75,9 +77,13 @@ async function processPackageSection(section, localPackage, targetPackage) {
   const targetSection = targetPackage[section] || {};
 
   // Keys to add (missing locally)
-  const keysToAdd = Object.keys(targetSection).filter(key => !(key in localSection));
+  const keysToAdd = Object.keys(targetSection).filter(
+    (key) => !(key in localSection)
+  );
   // Keys to update (present but with a different value)
-  const keysToUpdate = Object.keys(targetSection).filter(key => key in localSection && localSection[key] !== targetSection[key]);
+  const keysToUpdate = Object.keys(targetSection).filter(
+    (key) => key in localSection && localSection[key] !== targetSection[key]
+  );
 
   for (const key of keysToAdd) {
     const { add } = await inquirer.prompt([
@@ -150,21 +156,34 @@ async function processFile(templateId, item) {
     let targetPackage;
     try {
       targetPackage = JSON.parse(targetContentText);
-    } catch (err) {
+    } catch {
       throw new Error(`Target package.json is not valid JSON.`);
     }
     let localPackage;
     try {
       const localContent = await fs.readFile(filePath, 'utf-8');
       localPackage = JSON.parse(localContent);
-    } catch (err) {
+    } catch {
       throw new Error(`Failed to read local package.json.`);
     }
     // Process each section: scripts, dependencies, devDependencies
-    const changedScripts = await processPackageSection('scripts', localPackage, targetPackage);
-    const changedDependencies = await processPackageSection('dependencies', localPackage, targetPackage);
-    const changedDevDependencies = await processPackageSection('devDependencies', localPackage, targetPackage);
-    fileUpdated = changedScripts || changedDependencies || changedDevDependencies;
+    const changedScripts = await processPackageSection(
+      'scripts',
+      localPackage,
+      targetPackage
+    );
+    const changedDependencies = await processPackageSection(
+      'dependencies',
+      localPackage,
+      targetPackage
+    );
+    const changedDevDependencies = await processPackageSection(
+      'devDependencies',
+      localPackage,
+      targetPackage
+    );
+    fileUpdated =
+      changedScripts || changedDependencies || changedDevDependencies;
     if (fileUpdated) {
       await fs.writeFile(filePath, JSON.stringify(localPackage, null, 2));
       log.info(`${filePath} updated successfully.`);
@@ -172,7 +191,9 @@ async function processFile(templateId, item) {
   }
 
   if (fileUpdated && reset) {
-    log.info(`Critical file ${filePath} has been updated. Please run the migrate script again.`);
+    log.info(
+      `Critical file ${filePath} has been updated. Please run the migrate script again.`
+    );
     process.exit(0);
   }
 }
@@ -189,7 +210,9 @@ async function getTargetContent(templateId, filePath) {
     targetUrl = `${baseUrl}/_common/${filePath}?t=${encodeURIComponent(timestamp)}`;
     content = await fetchText(targetUrl);
     if (content === null) {
-      throw new Error(`File ${filePath} not found in template "${templateId}" or in _common`);
+      throw new Error(
+        `File ${filePath} not found in template "${templateId}" or in _common`
+      );
     }
   }
   return content;
@@ -199,12 +222,12 @@ async function getTargetContent(templateId, filePath) {
 async function getTemplateId() {
   const pkgPath = path.join(process.cwd(), 'package.json');
   if (!existsSync(pkgPath)) {
-    throw new Error("No package.json found in the current directory.");
+    throw new Error('No package.json found in the current directory.');
   }
   const pkgContent = await fs.readFile(pkgPath, 'utf-8');
   const pkg = JSON.parse(pkgContent);
   if (!pkg.template || !pkg.template.id) {
-    throw new Error("template.id not found in package.json");
+    throw new Error('template.id not found in package.json');
   }
   return pkg.template.id;
 }
@@ -216,7 +239,7 @@ async function main() {
     templateId = await getTemplateId();
     log.info(`Using template id: ${templateId}`);
   } catch (err) {
-    log.error("Error reading template id from package.json:", err.message);
+    log.error('Error reading template id from package.json:', err.message);
     process.exit(1);
   }
 

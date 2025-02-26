@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import ejs from 'ejs';
 import { log } from '@politico/hermes';
+import process from 'process';
 
 const rootDir = process.cwd();
 
@@ -174,7 +175,7 @@ async function updateLatestNodeVersion(majorVersion) {
 (async () => {
   log.info('Starting setup scripts...');
 
-  const pkgJsonText = await fs.readFileSync(
+  const pkgJsonText = fs.readFileSync(
     path.join(process.cwd(), 'package.json')
   );
   const pkg = JSON.parse(pkgJsonText);
